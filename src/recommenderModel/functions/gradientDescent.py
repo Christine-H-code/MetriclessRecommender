@@ -8,13 +8,13 @@ from src.recommenderModel.functions.backTesting import backtesting
 
 
 '''Calculated the gradient of the loss graph for step in each weighting to find change of loss for gradient descent update formula'''
-def gradient(cosineWeights,jaccardWeights,gradientStep,trainingDataSample, itemColumns, categoricalColumns, idColumnName,backDatedData,upToDateData,trainedDataIds,evaluationMethod):
+def gradient(cosineWeights,jaccardWeights,gradientStep,trainingDataSample, itemColumns, categoricalColumns, idColumnName,backDatedData,upToDateData,trainedDataIds,evaluationMethod,itemColumnName=None):
   loss_step = []
   for i in range(0,len(cosineWeights)):
       cw_step = list(cosineWeights)
       cw_step[i] += gradientStep
 
-      trainedData = RecommendationScores(6, cw_step, jaccardWeights,itemColumns,categoricalColumns,trainingDataSample.copy())
+      trainedData = RecommendationScores(6, cw_step, jaccardWeights,itemColumns,categoricalColumns,trainingDataSample.copy(),itemColumnName)
       backtestedData,modelScoreColumn = backtesting(backDatedData,upToDateData,trainedDataIds,idColumnName,trainedData,evaluationMethod)
       modelScoreStep = np.mean(backtestedData[modelScoreColumn])
       del backtestedData
@@ -25,7 +25,7 @@ def gradient(cosineWeights,jaccardWeights,gradientStep,trainingDataSample, itemC
       jw_step = list(jaccardWeights)
       jw_step[i] += gradientStep
 
-      trainedData = RecommendationScores(6, cosineWeights, jw_step,itemColumns,categoricalColumns,trainingDataSample.copy())
+      trainedData = RecommendationScores(6, cosineWeights, jw_step,itemColumns,categoricalColumns,trainingDataSample.copy(),itemColumnName)
       backtestedData,modelScoreColumn = backtesting(backDatedData,upToDateData,trainedDataIds,idColumnName,trainedData,evaluationMethod)
       modelScoreStep = np.mean(backtestedData[modelScoreColumn])
       del backtestedData
@@ -41,8 +41,8 @@ def gradient(cosineWeights,jaccardWeights,gradientStep,trainingDataSample, itemC
 
 
 '''update for weighting with gradient descent method using the change in "loss" from the gradient function'''
-def gradient_descent(cosineWeights,jaccardWeights,itemColumns,categoricalColumns,trainingDataSample,backDatedData,upToDateData,idColumnName,gradientStep,evaluationMethod='MRR4'):
-    trainedData = RecommendationScores(6, cosineWeights, jaccardWeights,itemColumns,categoricalColumns,trainingDataSample.copy())
+def gradient_descent(cosineWeights,jaccardWeights,itemColumns,categoricalColumns,trainingDataSample,backDatedData,upToDateData,idColumnName,gradientStep,evaluationMethod='MRR4',itemColumnName=None):
+    trainedData = RecommendationScores(6, cosineWeights, jaccardWeights,itemColumns,categoricalColumns,trainingDataSample.copy(),itemColumnName)
     trainedDataIds = trainedData[idColumnName].drop_duplicates() #trainedDataIds that have recommendations, training trainedDataIds
 
     backtestedData,modelScoreColumn = backtesting(backDatedData,upToDateData,trainedDataIds,idColumnName,trainedData,evaluationMethod) #backtesting on the current fold

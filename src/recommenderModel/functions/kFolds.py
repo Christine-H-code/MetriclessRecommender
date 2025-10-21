@@ -3,6 +3,7 @@ import pandas as pd
 from src.recommenderModel.functions.recommendationScore import RecommendationScores
 from src.recommenderModel.functions.backTesting import backtesting
 from src.recommenderModel.functions.gradientDescent import gradient_descent
+from src.recommenderModel.functions.dataPreparation import data_preparation
 
 
 
@@ -13,13 +14,13 @@ def k_folds(data,k,backDatedData,upToDateData,nRecommendations,cosineWeights,jac
     foldScores = []
 
     #training data (subset of backdated data)
-    itemColumns,categoricalColumns, trainingData,idColumnName = prep(data.copy()) 
+    itemColumns,nCategoricalColumns, trainingData,idColumnName,itemColumnName = data_preparation(data.copy()) 
 
     trainingData = trainingData.drop(columns = ['item_count','no. unique items','set of items']).set_index(idColumnName)
    
     for i in range(k):
         
-        trainedData = RecommendationScores(nRecommendations, cosineWeights, jaccardWeights,itemColumns,categoricalColumns,trainingData.copy().sample(foldSize) ) #recommender function to get recommendations for the fold sample
+        trainedData = RecommendationScores(nRecommendations, cosineWeights, jaccardWeights,itemColumns,nCategoricalColumns,trainingData.copy().sample(foldSize),itemColumnName ) #recommender function to get recommendations for the fold sample
         
         trainedDataIds = trainedData[idColumnName].drop_duplicates() #ids that have recommendations, training ids
 
@@ -42,7 +43,7 @@ def k_folds_optimization(data,k,backDatedData,upToDateData,nRecommendations,grad
     jaccard_weightings = [] #list of jaccard weightings used for each fold
 
     #training data (subset of backdated data)
-    itemColumns,categoricalColumns, trainingData,idColumnName = prep(data.copy()) 
+    itemColumns,nCategoricalColumns, trainingData,idColumnName,itemColumnName = data_preparation(data.copy()) 
 
     trainingData = trainingData.drop(columns = ['item_count','no. unique items','set of items']).set_index(idColumnName)
     
@@ -52,20 +53,20 @@ def k_folds_optimization(data,k,backDatedData,upToDateData,nRecommendations,grad
 
         trainingDataSample = trainingData.copy().sample(fold_sample_size) #sample of the fold of data used for optimization
 
-        cosineWeights = (1)*np.array([1] *(trainingDataSample.shape[1] -categoricalColumns)) 
-        jaccardWeights = (1)*np.array([1] *(categoricalColumns)) #include item info
+        cosineWeights = (1)*np.array([1] *(trainingDataSample.shape[1] -nCategoricalColumns)) 
+        jaccardWeights = (1)*np.array([1] *(nCategoricalColumns)) #include item info
 
         #--------------------optimizations of weightings------------------
         #process of finding optimal weightings on fold sample
 
         while e > 0.005 and t>0: #as e tend to zero the change in the "loss" value tends to zero
-            cosineWeights,jaccardWeights,e = gradient_descent(cosineWeights,jaccardWeights,itemColumns,categoricalColumns,trainingDataSample,backDatedData,upToDateData,idColumnName,gradientStep) 
+            cosineWeights,jaccardWeights,e = gradient_descent(cosineWeights,jaccardWeights,itemColumns,nCategoricalColumns,trainingDataSample,backDatedData,upToDateData,idColumnName,gradientStep,itemColumnName=itemColumnName) 
             print(e, t, i)
             t = t-1 
 
         #------------------------------------------------------------------------
         #found optimal weigthings applied to the full fold for final fold scoring
-        trainedData = RecommendationScores(nRecommendations, cosineWeights, jaccardWeights,itemColumns,categoricalColumns,trainingData.copy().sample(foldSize) )
+        trainedData = RecommendationScores(nRecommendations, cosineWeights, jaccardWeights,itemColumns,nCategoricalColumns,trainingData.copy().sample(foldSize),itemColumnName)
         trainedDataIds = trainedData[idColumnName].drop_duplicates() #trainedDataIds that have recommendations, training trainedDataIds
 
         backtestedData,modelScoreColumn = backtesting(backDatedData,upToDateData,trainedDataIds,idColumnName,trainedData.copy())
