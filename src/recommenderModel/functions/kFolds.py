@@ -28,9 +28,9 @@ def k_folds(data,k,backDatedData,upToDateData,nRecommendations,cosineWeights,jac
 
         foldScores.append(np.mean(backtestedData['MRR_4_score']))
         
-    return backtestedData,foldScores
+    return foldScores
 
-'''returns the latest fold's dataframe with nRecommendations and the ave MRR_4 model score for all folds'''
+'''returns the ave MRR_4 model score for all folds'''
 
 
 
@@ -74,6 +74,6 @@ def k_folds_optimization(data,k,backDatedData,upToDateData,nRecommendations,grad
         foldScores.append(np.mean(backtestedData[modelScoreColumn])) #average model score for the fold
         cosine_weightings.append(cosineWeights)
         jaccard_weightings.append(jaccardWeights)
-    return backtestedData,cosine_weightings,jaccard_weightings,foldScores
+    return cosine_weightings,jaccard_weightings,foldScores
 
-'''returns the latest fold's dataframe with nRecommendations, the optimal weightings for all folds and the ave model score for all folds'''
+'''returns the optimal weightings for all folds and the ave model score for all folds'''
