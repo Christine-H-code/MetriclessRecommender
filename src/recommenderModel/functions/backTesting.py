@@ -37,4 +37,4 @@ def backtesting(backDatedData,upToDateData,trainedDataIds,idColumnName,trainingD
         modelScoreColumn = 'MRR_4_score'
 
     return newItemData,modelScoreColumn
-'''returning dataframe with training data, top 6 recommendations, item info and recommendation scores'''
+'''returning dataframe with training data, top n recommendations, item info and recommendation scores'''

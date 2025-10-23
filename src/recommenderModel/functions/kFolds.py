@@ -9,7 +9,7 @@ from src.recommenderModel.functions.dataPreparation import data_preparation
 
 '''runs k folds of training sets (some sample of backdated data) through recommender, and backtests each. 
 If best weigthings are known and no optimization is necessary, use this function instead of k_folds_optimization.'''
-def k_folds(data,k,backDatedData,upToDateData,nRecommendations,cosineWeights,jaccardWeights,foldSize = 1000):
+def k_folds(data,k,backDatedData,upToDateData,nRecommendations,cosineWeights,jaccardWeights,foldSize = 1000,evaluationMethod='MRR4'):
 
     foldScores = []
 
@@ -24,18 +24,18 @@ def k_folds(data,k,backDatedData,upToDateData,nRecommendations,cosineWeights,jac
         
         trainedDataIds = trainedData[idColumnName].drop_duplicates() #ids that have recommendations, training ids
 
-        backtestedData = backtesting(backDatedData,upToDateData,trainedDataIds,idColumnName,trainedData.copy(),'MRR4') #backtesting on the current fold
+        backtestedData,modelScoreColumn = backtesting(backDatedData,upToDateData,trainedDataIds,idColumnName,trainedData.copy(),evaluationMethod) #backtesting on the current fold
 
-        foldScores.append(np.mean(backtestedData['MRR_4_score']))
+        foldScores.append(np.mean(backtestedData[modelScoreColumn]))
         
     return foldScores
 
-'''returns the ave MRR_4 model score for all folds'''
+'''returns the ave model score for all folds'''
 
 
 
 '''runs k folds of training sets (some sample of backdated data) through recommender, and backtests each'''
-def k_folds_optimization(data,k,backDatedData,upToDateData,nRecommendations,gradientStep,foldSize = 1000,fold_sample_size = 1000):
+def k_folds_optimization(data,k,backDatedData,upToDateData,nRecommendations,gradientStep,foldSize = 1000,fold_sample_size = 1000,evaluationMethod='MRR4'):
 
 
     foldScores = [] #list of scores for each fold
@@ -60,8 +60,8 @@ def k_folds_optimization(data,k,backDatedData,upToDateData,nRecommendations,grad
         #process of finding optimal weightings on fold sample
 
         while e > 0.005 and t>0: #as e tend to zero the change in the "loss" value tends to zero
-            cosineWeights,jaccardWeights,e = gradient_descent(cosineWeights,jaccardWeights,itemColumns,nCategoricalColumns,trainingDataSample,backDatedData,upToDateData,idColumnName,gradientStep,itemColumnName=itemColumnName) 
-            print(e, t, i)
+            cosineWeights,jaccardWeights,e = gradient_descent(cosineWeights,jaccardWeights,itemColumns,nCategoricalColumns,trainingDataSample,backDatedData,upToDateData,idColumnName,gradientStep,evaluationMethod=evaluationMethod,itemColumnName=itemColumnName) 
+            
             t = t-1 
 
         #------------------------------------------------------------------------
@@ -69,7 +69,7 @@ def k_folds_optimization(data,k,backDatedData,upToDateData,nRecommendations,grad
         trainedData = RecommendationScores(nRecommendations, cosineWeights, jaccardWeights,itemColumns,nCategoricalColumns,trainingData.copy().sample(foldSize),itemColumnName)
         trainedDataIds = trainedData[idColumnName].drop_duplicates() #trainedDataIds that have recommendations, training trainedDataIds
 
-        backtestedData,modelScoreColumn = backtesting(backDatedData,upToDateData,trainedDataIds,idColumnName,trainedData.copy())
+        backtestedData,modelScoreColumn = backtesting(backDatedData,upToDateData,trainedDataIds,idColumnName,trainedData.copy(),evaluationMethod)
 
         foldScores.append(np.mean(backtestedData[modelScoreColumn])) #average model score for the fold
         cosine_weightings.append(cosineWeights)
