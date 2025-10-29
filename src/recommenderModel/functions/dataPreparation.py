@@ -27,7 +27,7 @@ def data_preparation(data,idColumnName,itemColumnName):
     numericalData.iloc[:,1:] = numericalData.iloc[:,1:].fillna(0.0)
 
     def custom_agg(series): #if the numerical value is the same accross all rows per client don't take sum, take value (eg, how many items), otherwise take sum (eg. premium for policy)
-        return series.iloc[0] if len(series.unique()) == 1 else series.sum()
+        return series.iloc[0] if series.nunique() == 1 else series.sum()
     # Group by 'id' and apply the aggregation
     numericalData = numericalData.groupby(idColumnName).agg({col: custom_agg for col in numericalData.columns[1:]}).reset_index()
 
