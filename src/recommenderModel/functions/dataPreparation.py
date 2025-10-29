@@ -1,6 +1,9 @@
 import pandas as pd
 
 def data_preparation(data,idColumnName,itemColumnName):
+    #make id column the first column
+    idCol = data.pop(idColumnName)
+    data.insert(0,idColumnName,idCol)
      # Count the number of items per user
     data['item_count'] = 1
     temporaryData = data.groupby(idColumnName)['item_count'].sum().reset_index()
@@ -31,7 +34,7 @@ def data_preparation(data,idColumnName,itemColumnName):
     #creating categorical feature data
     categoricalData = data.iloc[:,1:-2].select_dtypes(include=['object','bool','category']).copy()
     categoricalData.insert(0,idColumnName,data[idColumnName])
-    categoricalData = pd.get_dummies(categoricalData.iloc[:,1:],columns = categoricalData.iloc[:,1:].columns, dtype=int)
+    categoricalData = pd.get_dummies(categoricalData.iloc[:,1:],columns = categoricalData.iloc[:,1:].columns, dtype=int,prefix_sep="_:")
     categoricalData.insert(0,idColumnName,data[idColumnName])
     categoricalData = categoricalData.groupby(idColumnName).sum()
     categoricalData = categoricalData[categoricalData.columns].map(lambda x: 1 if x > 0 else 0)
