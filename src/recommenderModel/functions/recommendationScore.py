@@ -43,6 +43,6 @@ def RecommendationScores(nRecommendations, cosineWeights, jaccardWeights,recomme
 #Removing the prefix from hot-one encoding
     if hotOneEncodingPrefix is not None:
         for r in range(1,nRecommendations+1,1):
-            recommendations_df[f'no.{r} most recommended item'] = recommendations_df[f'no.{r} most recommended item'].str.replace(hotOneEncodingPrefix, '') #cleaning up
+            recommendations_df[f'no.{r} most recommended item'] = recommendations_df[f'no.{r} most recommended item'].str.replace(hotOneEncodingPrefix+'_', '') #cleaning up
 
     return recommendations_df

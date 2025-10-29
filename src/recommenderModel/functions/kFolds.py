@@ -9,16 +9,17 @@ from src.recommenderModel.functions.dataPreparation import data_preparation
 
 '''runs k folds of training sets (some sample of backdated data) through recommender, and backtests each. 
 If best weigthings are known and no optimization is necessary, use this function instead of k_folds_optimization.'''
-def k_folds(data,k,backDatedData,upToDateData,nRecommendations,cosineWeights,jaccardWeights,foldSize = 1000,evaluationMethod='MRR4'):
+def k_folds(data,idColumnName,itemColumnName,k,backDatedData,upToDateData,nRecommendations,cosineWeights,jaccardWeights,foldSize = 1000,evaluationMethod='MRR4'):
 
     foldScores = []
 
     #training data (subset of backdated data)
-    itemColumns,nCategoricalColumns, trainingData,idColumnName,itemColumnName = data_preparation(data.copy()) 
+    itemColumns,nCategoricalColumns, trainingData = data_preparation(data.copy(),idColumnName,itemColumnName) 
 
     trainingData = trainingData.drop(columns = ['item_count','no. unique items','set of items']).set_index(idColumnName)
    
     for i in range(k):
+        print(nCategoricalColumns,len(cosineWeights))
         
         trainedData = RecommendationScores(nRecommendations, cosineWeights, jaccardWeights,itemColumns,nCategoricalColumns,trainingData.copy().sample(foldSize),itemColumnName ) #recommender function to get recommendations for the fold sample
         
@@ -35,7 +36,7 @@ def k_folds(data,k,backDatedData,upToDateData,nRecommendations,cosineWeights,jac
 
 
 '''runs k folds of training sets (some sample of backdated data) through recommender, and backtests each'''
-def k_folds_optimization(data,k,backDatedData,upToDateData,nRecommendations,gradientStep,foldSize = 1000,fold_sample_size = 1000,evaluationMethod='MRR4'):
+def k_folds_optimization(data,idColumnName,itemColumnName,k,backDatedData,upToDateData,nRecommendations,gradientStep,foldSize = 1000,fold_sample_size = 1000,evaluationMethod='MRR4'):
 
 
     foldScores = [] #list of scores for each fold
@@ -43,13 +44,13 @@ def k_folds_optimization(data,k,backDatedData,upToDateData,nRecommendations,grad
     jaccard_weightings = [] #list of jaccard weightings used for each fold
 
     #training data (subset of backdated data)
-    itemColumns,nCategoricalColumns, trainingData,idColumnName,itemColumnName = data_preparation(data.copy()) 
+    itemColumns,nCategoricalColumns, trainingData= data_preparation(data.copy(),idColumnName,itemColumnName) 
 
     trainingData = trainingData.drop(columns = ['item_count','no. unique items','set of items']).set_index(idColumnName)
     
     for i in range(k):
         e = 0.1 #initializing error value for gradient descent
-        t = 70 #to avoid infinite loop
+        t = 2 #to avoid infinite loop
 
         trainingDataSample = trainingData.copy().sample(fold_sample_size) #sample of the fold of data used for optimization
 
@@ -63,7 +64,8 @@ def k_folds_optimization(data,k,backDatedData,upToDateData,nRecommendations,grad
             cosineWeights,jaccardWeights,e = gradient_descent(cosineWeights,jaccardWeights,itemColumns,nCategoricalColumns,trainingDataSample,backDatedData,upToDateData,idColumnName,gradientStep,evaluationMethod=evaluationMethod,itemColumnName=itemColumnName) 
             
             t = t-1 
-
+            print(e,t)
+        print('E',e,' T', t)
         #------------------------------------------------------------------------
         #found optimal weigthings applied to the full fold for final fold scoring
         trainedData = RecommendationScores(nRecommendations, cosineWeights, jaccardWeights,itemColumns,nCategoricalColumns,trainingData.copy().sample(foldSize),itemColumnName)

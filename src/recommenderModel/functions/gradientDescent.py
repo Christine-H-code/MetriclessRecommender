@@ -21,6 +21,7 @@ def gradient(cosineWeights,jaccardWeights,gradientStep,trainingDataSample, itemC
 
       loss_step.append(1-modelScoreStep) #1-score to mimic log loss where 0 means perfect performing model
       
+      
   for i in range(0,len(jaccardWeights)):
       jw_step = list(jaccardWeights)
       jw_step[i] += gradientStep
@@ -50,7 +51,7 @@ def gradient_descent(cosineWeights,jaccardWeights,itemColumns,categoricalColumns
     mod_score = np.mean(backtestedData[modelScoreColumn])
     del backtestedData
     
-    loss_step = gradient(cosineWeights,jaccardWeights,gradientStep,trainingDataSample, itemColumns, categoricalColumns, idColumnName,backDatedData,upToDateData,trainedDataIds) #loss for each weighting
+    loss_step = gradient(cosineWeights,jaccardWeights,gradientStep,trainingDataSample, itemColumns, categoricalColumns, idColumnName,backDatedData,upToDateData,trainedDataIds,evaluationMethod,itemColumnName) #loss for each weighting
     d_loss = loss_step - np.full_like(loss_step, 1- mod_score)#differnce in loss
 
     cw_next = cosineWeights - d_loss[0:len(cosineWeights)]

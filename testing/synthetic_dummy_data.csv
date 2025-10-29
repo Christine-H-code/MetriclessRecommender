@@ -1,0 +1,203 @@
+ID,age,gender,income,premium,no. dependents,region,marital status,something status,cx persona,policy
+id1,30,m,68000,100,0,gauteng,widow,y,O,RA
+id2,23,f,70000,350,2,KZN,married,y,O,endow
+id3,70,m,22000,400,1,limpopo,married,n,A,pet
+id4,50,m,57000,150,1,gauteng,married,y,M,funeral
+id5,50,m,240000,200,2,eastern cape,divorced,n,O,RA
+id6,25,f,67000,100,0,KZN,single,y,M,life
+id7,25,m,80000,203,0,gauteng,divorced,y,L,RA
+id8,50,f,200000,230,2,western cape,single,y,F,TFSA
+id9,29,f,80000,200,1,gauteng,married,n,Y,funeral
+id10,28,f,70000,450,0,gauteng,unknown,y,Y,RA
+id11,50,m,22000,50,0,KZN,married,y,F,life
+id12,24,f,50000,300,0,gauteng,widow,y,A,pet
+id13,24,m,50000,300,1,gauteng,unknown,y,F,funeral
+id14,78,f,20000,400,1,limpopo,married,y,M,RA
+id15,40,m,60000,300,2,limpopo,single,y,Y,RA
+id16,80,f,70000,203,1,limpopo,single,y,O,life
+id17,40,f,17000,400,2,gauteng,married,n,M,funeral
+id18,87,m,70000,120,0,mpumalanga,single,y,L,RA
+id19,31,m,90000,120,2,KZN,divorced,y,M,RA
+id20,23,f,60000,300,0,gauteng,single,n,M,TFSA
+id21,20,f,210000,100,3,gauteng,single,y,O,life
+id22,50,m,50000,50,0,KZN,divorced,n,O,life
+id23,70,m,50000,200,0,gauteng,married,n,L,TFSA
+id24,69,m,240000,400,3,gauteng,divocred,y,L,funeral
+id25,40,f,240000,400,1,gauteng,single,y,O,TFS
+id26,71,f,70000,400,0,gauteng,single,n,Y,RA
+id27,23,m,17000,250,0,mpumalanga,single,y,O,TSFA
+id28,21,m,70000,500,0,mpumalanga,single,y,R,RA
+id29,67,f,50000,100,0,gauteng,single,y,O,RA
+id30,23,f,80000,400,1,KZN,single,y,M,TFSA
+id31,70,f,15000,50,1,gauteng,married,y,A,RA
+id32,21,f,15000,120,0,western cape,married,y,M,life
+id33,24,m,240000,300,3,gauteng,married,y,R,TFS
+id34,50,m,50000,350,0,gauteng,married,y,O,RA
+id35,28,f,68000,120,2,eastern cape,single,y,O,TFS
+id36,23,f,50000,300,1,mpumalanga,single,y,R,pet
+id37,40,f,80000,230,1,north west,divorced,y,M,endow
+id38,30,m,60000,500,2,gauteng,married,n,O,RA
+id39,20,f,70000,500,0,western cape,married,n,M,funeral
+id40,20,f,70000,150,1,western cape,single,n,M,TFS
+id41,70,f,20000,300,0,KZN,married,y,F,TFS
+id42,29,f,60000,250,0,western cape,divorced,n,R,RA
+id43,34,f,79000,350,0,gauteng,married,n,F,life
+id44,42,f,50000,400,0,eastern cape,single,y,M,funeral
+id45,24,f,50000,120,2,western cape,divorced,y,M,life
+id46,78,m,50000,400,2,western cape,married,y,F,RA
+id47,69,m,70000,340,0,north west,married,y,R,RA
+id48,21,m,40000,490,2,western cape,marriewd,y,R,life
+id49,69,f,23000,300,0,KZN,married,y,L,endow
+id50,29,f,22000,340,1,KZN,single,y,O,TFSA
+id51,20,f,200000,340,0,gauteng,married,y,O,RA
+id52,21,f,78000,400,2,KZN,single,n,Y,RA
+id53,69,m,67000,120,0,mpumalanga,married,n,O,RA
+id54,29,m,100000,100,0,western cape,married,y,O,RA
+id55,82,f,60000,430,0,KZN,married,y,Y,RA
+id56,35,f,68000,510,0,gauteng,single,n,R,life
+id57,35,m,68000,50,2,western cape,married,y,R,TFSA
+id58,20,f,15000,240,1,mpumalanga,married,y,L,pet
+id59,24,f,15000,230,2,eastern cape,single,y,O,funeral
+id60,21,f,240000,100,0,western cape,single,n,O,funeral
+id61,50,m,50000,100,0,KZN,single,y,R,RA
+id62,30,f,68000,450,1,limpopo,single,n,R,funeral
+id63,30,f,68000,400,0,mpumalanga,married,y,F,life
+id64,50,f,210000,340,0,gauteng,married,y,L,funeral
+id65,24,f,60000,340,0,KZN,single,y,A,endow
+id66,21,f,60000,240,0,gauteng,married,y,O,TFSA
+id67,29,m,60000,300,2,KZN,single,y,O,RA
+id68,38,f,60000,400,2,KZN,married,y,R,RA
+id69,53,f,22000,120,0,KZN,married,y,Y,life
+id70,78,f,15000,340,1,KZN,single,n,L,TFSA
+id71,25,f,60000,510,1,gauteng,married,y,M,RA
+id72,87,m,240000,203,0,eastern cape,single,y,Y,funeral
+id73,24,f,70000,400,1,mpumalanga,single,y,L,endow
+id74,78,f,60000,500,0,limpopo,widow,n,M,RA
+id75,50,m,40000,300,1,gauteng,married,y,A,TSFA
+id76,68,f,200000,340,0,KZN,single,y,O,funeral
+id77,69,f,60000,100,0,mpumalanga,divorced,n,O,RA
+id78,30,f,90000,120,0,gauteng,married,n,Y,RA
+id79,35,m,80000,450,0,limpopo,married,y,M,pet
+id80,38,f,200000,400,0,KZN,married,n,F,life
+id81,23,f,80000,100,0,gauteng,single,n,O,RA
+id82,53,f,200000,500,0,gauteng,married,y,O,RA
+id83,38,f,68000,340,1,western cape,single,y,Y,TSFA
+id84,25,f,80000,50,1,gauteng,married,y,M,RA
+id85,82,f,67000,340,0,gauteng,married,n,R,TFSA
+id86,35,m,80000,500,0,mpumalanga,married,y,L,life
+id87,30,m,78000,300,1,KZN,single,y,O,pet
+id88,23,m,15000,400,0,mpumalanga,married,y,F,RA
+id89,40,m,70000,230,2,gauteng,married,y,R,endow
+id90,80,m,60000,490,0,gauteng,divorced,y,O,life
+id91,38,f,60000,300,2,western cape,divorced,y,M,RA
+id92,29,f,23000,230,0,KZN,married,y,O,RA
+id93,82,m,50000,400,2,western cape,marriewd,n,F,TFS
+id94,50,m,70000,400,0,northern cape,married,y,O,RA
+id95,50,f,60000,430,0,limpopo,married,y,O,life
+id96,20,m,50000,350,1,gauteng,single,y,L,funeral
+id97,35,m,57000,340,1,gauteng,single,n,M,funeral
+id98,30,f,80000,400,0,eastern cape,single,y,Y,life
+id99,29,m,70000,230,1,mpumalanga,divorced,y,L,RA
+id100,70,m,17000,340,3,gauteng,married,y,O,life
+id101,68,m,50000,400,1,western cape,single,y,O,funeral
+id102,21,f,60000,300,2,gauteng,married,y,F,funeral
+id103,80,f,23000,500,3,gauteng,divocred,y,O,life
+id104,30,m,78000,500,0,KZN,married,n,Y,RA
+id105,78,f,67000,510,0,freestate,single,n,L,TFS
+id106,50,f,200000,510,2,gauteng,married,y,O,TFSA
+id107,50,f,70000,450,0,gauteng,single,n,M,RA
+id108,59,f,90000,200,0,KZN,divorced,y,R,TFSA
+id109,35,f,80000,300,0,KZN,married,n,A,funeral
+id110,51,f,17000,400,1,eastern cape,married,n,F,RA
+id111,50,f,67000,450,0,mpumalanga,single,y,F,funeral
+id112,29,m,60000,100,1,eastern cape,divocred,n,M,pet
+id113,20,f,50000,100,0,KZN,single,y,L,endow
+id114,67,f,15000,400,0,gauteng,single,y,O,TFS
+id115,30,m,50000,100,1,gauteng,single,n,R,life
+id116,67,f,60000,400,1,gauteng,married,y,L,funeral
+id117,20,f,67000,230,0,KZN,married,y,O,life
+id118,23,m,60000,450,0,northern cape,single,y,R,RA
+id119,30,m,57000,340,1,gauteng,single,n,O,RA
+id120,20,m,210000,510,0,gauteng,married,y,R,RA
+id121,78,f,70000,430,0,gauteng,married,y,O,life
+id122,28,m,80000,230,0,north west,single,y,O,life
+id123,23,f,60000,230,0,gauteng,married,y,L,funeral
+id124,23,f,80000,120,1,western cape,single,n,M,life
+id125,30,f,60000,240,0,KZN,married,n,O,TFSA
+id126,40,f,70000,450,1,KZN,married,n,R,RA
+id127,25,m,90000,230,0,western cape,divocred,n,F,life
+id128,38,f,50000,100,0,KZN,married,n,O,RA
+id129,20,m,80000,100,0,mpumalanga,single,y,O,life
+id130,31,m,67000,430,1,gauteng,unknown,n,R,funeral
+id131,38,m,40000,120,1,western cape,single,y,R,life
+id132,30,f,60000,203,0,mpumalanga,married,y,M,funeral
+id133,30,f,200000,450,0,gauteng,married,y,F,life
+id134,78,f,150000,120,1,KZN,married,n,R,TFSA
+id135,42,f,70000,500,2,western cape,married,y,O,life
+id136,50,f,15000,300,2,freestate,married,y,F,life
+id137,40,f,79000,203,2,gauteng,widow,y,Y,funeral
+id138,21,m,200000,500,0,mpumalanga,married,y,A,life
+id139,23,f,200000,300,0,gauteng,married,y,M,TFSA
+id140,30,f,50000,300,2,gauteng,married,n,O,RA
+id141,23,f,15000,120,2,KZN,married,n,L,funeral
+id142,20,m,15000,300,1,KZN,married,y,M,life
+id143,59,f,15000,400,0,gauteng,married,n,Y,funeral
+id144,25,m,17000,340,1,eastern cape,widow,y,M,RA
+id145,59,m,240000,230,0,western cape,single,y,M,TSFA
+id146,68,m,23000,400,1,gauteng,widow,n,A,RA
+id147,82,f,50000,400,0,gauteng,married,y,F,endow
+id148,23,m,60000,300,1,limpopo,widow,y,O,life
+id149,34,m,50000,230,2,mpumalanga,married,y,R,life
+id150,30,f,50000,340,1,gauteng,married,y,R,life
+id151,24,f,67000,510,0,KZN,married,y,Y,funeral
+id152,20,f,20000,120,0,KZN,single,y,R,funeral
+id153,51,f,90000,350,0,freestate,married,y,M,RA
+id154,25,m,15000,350,0,gauteng,married,n,Y,TFSA
+id155,80,f,50000,230,1,KZN,married,y,R,life
+id156,24,m,50000,450,0,western cape,single,y,M,life
+id157,30,f,68000,203,2,gauteng,married,y,O,RA
+id158,20,m,15000,120,0,gauteng,single,y,O,funeral
+id159,78,m,50000,340,0,gauteng,married,n,O,RA
+id160,70,f,70000,100,0,gauteng,unknown,y,O,life
+id161,35,f,90000,100,2,western cape,divorced,y,O,RA
+id162,71,m,68000,400,0,gauteng,married,n,M,funeral
+id163,25,m,70000,120,2,western cape,divorced,y,O,life
+id164,50,f,70000,300,0,gauteng,single,y,O,funeral
+id165,51,m,150000,230,1,gauteng,married,y,F,funeral
+id166,38,m,210000,400,0,western cape,marriewd,n,O,life
+id167,29,m,80000,400,0,KZN,single,n,R,RA
+id168,50,f,80000,100,2,KZN,married,y,O,RA
+id169,28,f,150000,100,2,mpumalanga,married,y,R,RA
+id170,20,m,50000,300,2,limpopo,single,y,M,RA
+id171,20,f,60000,120,0,western cape,single,y,R,RA
+id172,35,f,50000,350,3,gauteng,married,y,Y,TFSA
+id173,78,m,60000,100,0,gauteng,married,y,M,pet
+id174,78,m,150000,230,0,gauteng,single,y,O,pet
+id175,71,f,80000,400,0,gauteng,single,n,O,RA
+id176,30,f,22000,300,0,gauteng,married,y,O,RA
+id177,80,m,240000,400,0,limpopo,single,y,O,TFS
+id178,70,f,15000,200,1,limpopo,single,n,O,RA
+id179,24,f,17000,300,1,northern cape,single,y,Y,RA
+id180,50,f,22000,230,0,eastern cape,single,y,M,life
+id181,70,m,15000,230,0,gauteng,marriewd,n,F,RA
+id182,25,f,100000,230,2,mpumalanga,married,y,M,RA
+id183,78,f,70000,340,0,mpumalanga,married,y,O,funeral
+id184,20,f,15000,430,2,limpopo,married,y,M,life
+id185,50,m,67000,230,1,western cape,widow,n,O,short term
+id186,30,m,210000,490,0,freestate,divocred,y,R,RA
+id187,25,m,70000,350,1,gauteng,divorced,n,O,RA
+id188,40,f,60000,100,2,eastern cape,married,n,O,life
+id189,24,m,22000,400,0,gauteng,married,y,M,RA
+id190,50,f,67000,100,1,KZN,single,y,R,RA
+id191,35,m,240000,500,2,KZN,married,y,O,life
+id192,82,f,68000,400,2,mpumalanga,married,n,M,RA
+id193,50,m,40000,240,0,gauteng,widow,y,A,RA
+id194,21,f,60000,203,0,western cape,single,n,M,life
+id195,29,f,17000,340,2,mpumalanga,married,y,L,life
+id196,20,m,68000,230,0,gauteng,married,y,Y,RA
+id197,51,f,60000,230,0,mpumalanga,married,y,A,TFSA
+id198,30,f,15000,400,0,gauteng,married,y,M,life
+id199,78,f,68000,300,2,gauteng,divorced,n,O,funeral
+id200,87,f,15000,300,0,limpopo,married,y,M,TFSA
+id192,82,f,68000,300,2,mpumalanga,married,n,M,TFSA
+id163,25,m,70000,90,2,western cape,divorced,y,O,funeral
